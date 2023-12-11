@@ -1,0 +1,26 @@
+#number {
+  font-size: large;
+  font-weight: bold;
+}
+
+#name {
+  font-size: large;
+}
+
+#container {
+  border: 1px solid gray;
+  display: flex;
+  margin: 10px auto;
+  padding: 10px;
+  width: 400px;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  &:hover {
+    background-color: bisque;
+  }
+}
+
+#wp {
+  height: 30px;
+}

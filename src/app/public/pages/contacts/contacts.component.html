@@ -1,0 +1,7 @@
+<button [routerLink]="['new']">New contact</button>
+<main id="container" *ngIf="contactsData.length > 0">
+  <app-contact-card
+    *ngFor="let contact of contactsData"
+    [contact]="contact"
+  ></app-contact-card>
+</main>
