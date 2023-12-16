@@ -1,1 +1,11 @@
-<p>home works!</p>
+<section id="home">
+  <diV *ngIf="isLogged() === false" id="login">
+    <h1 id="card-title">Agenda de contactos</h1>
+    <button [routerLink]="['/auth']">Iniciar Sesión</button>
+    <button [routerLink]="['/auth/register']">Registrarse</button>
+  </diV>
+  <div *ngIf="isLogged() === true" id="home-contacts">
+    <div id="contacts" [routerLink]="['/contacts']">Tus contactos</div>
+    <div id="shared-contacts">Listas de contactos <br />compartidas</div>
+  </div>
+</section>

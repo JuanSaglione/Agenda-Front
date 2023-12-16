@@ -1,1 +1,76 @@
-<p>new-contact works!</p>
+<section id="container">
+  <button id="back-button" (click)="goToPreviousPage()">Volver</button>
+  <div class="form-container">
+    <div class="register-container">
+      <h2>Nuevo Contacto</h2>
+
+      <form class="newContact-form" #newContactForm="ngForm">
+        <label for="name">Nombre:</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          maxlength="20"
+          placeholder="Nombre del nuevo contacto"
+          [(ngModel)]="contactData.Name"
+          #name="ngModel"
+          [required]="true"
+        />
+        <p *ngIf="name.touched && name.errors">Nombre requerido</p>
+
+        <label for="lastName">Apellido:</label>
+        <input
+          type="text"
+          id="lastName"
+          name="lastName"
+          maxlength="20"
+          placeholder="Apellido del nuevo contacto"
+          [(ngModel)]="contactData.LastName"
+          #lastName="ngModel"
+        />
+
+        <label for="email">Email:</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Correo del nuevo contacto"
+          [(ngModel)]="contactData.Email"
+          #email="ngModel"
+          pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$"
+          [required]="true"
+        />
+        <p *ngIf="email.touched && email.errors">
+          Correo electronico no válido
+        </p>
+
+        <label for="phoneNumber">Teléfono:</label>
+        <input
+          type="tel"
+          id="phoneNumber"
+          name="phoneNumber"
+          placeholder="Número del nuevo contacto"
+          [required]="true"
+          [(ngModel)]="contactData.PhoneNumber"
+          #phoneNumber="ngModel"
+          maxlength="15"
+        />
+        <p *ngIf="phoneNumber.touched && phoneNumber.errors">
+          Teléfono Requerido
+        </p>
+
+        <label for="direction">Dirección:</label>
+        <input
+          type="text"
+          id="direction"
+          name="direction"
+          placeholder="Dirección del nuevo contacto"
+        />
+
+        <button type="submit" [disabled]="newContactForm.invalid">
+          Agregar Contacto
+        </button>
+      </form>
+    </div>
+  </div>
+</section>

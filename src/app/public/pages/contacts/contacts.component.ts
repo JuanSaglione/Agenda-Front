@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ContactJsonPlaceholder } from 'src/app/core/interfaces/contact.interface';
+import {
+  ContactJsonPlaceholder,
+  FakeContactJsonPlaceholder,
+} from 'src/app/core/interfaces/contact.interface';
 import { ContactService } from 'src/app/core/services/contact.service';
 
 @Component({
@@ -8,7 +11,7 @@ import { ContactService } from 'src/app/core/services/contact.service';
   styleUrls: ['./contacts.component.scss'],
 })
 export class ContactsComponent implements OnInit {
-  contactsData: ContactJsonPlaceholder[] = [];
+  contactsData: FakeContactJsonPlaceholder[] = [];
 
   constructor(private contactS: ContactService) {}
 
@@ -17,7 +20,7 @@ export class ContactsComponent implements OnInit {
   }
 
   async getData() {
-    this.contactsData = await this.contactS.getContacts();
+    this.contactsData = await this.contactS.getFakeData();
     console.log(this.contactsData);
   }
 }

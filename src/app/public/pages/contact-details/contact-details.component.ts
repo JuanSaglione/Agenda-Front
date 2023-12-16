@@ -1,6 +1,11 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { ContactJsonPlaceholder } from 'src/app/core/interfaces/contact.interface';
+import {
+  ContactJsonPlaceholder,
+  FakeContactJsonPlaceholder,
+} from 'src/app/core/interfaces/contact.interface';
 import { ContactService } from 'src/app/core/services/contact.service';
 
 @Component({
@@ -9,11 +14,13 @@ import { ContactService } from 'src/app/core/services/contact.service';
   styleUrls: ['./contact-details.component.scss'],
 })
 export class ContactDetailsComponent implements OnInit {
-  contact!: ContactJsonPlaceholder;
+  changedContact!: FakeContactJsonPlaceholder;
+  contact!: FakeContactJsonPlaceholder;
 
   constructor(
     private route: ActivatedRoute,
-    private contactS: ContactService
+    private contactS: ContactService,
+    private location: Location
   ) {}
 
   ngOnInit(): void {
@@ -21,18 +28,26 @@ export class ContactDetailsComponent implements OnInit {
       const contactId = params.get('id');
 
       if (contactId) {
-        // Llama al servicio para obtener los detalles del contacto
         this.contactS
-          .getContactDetails(parseInt(contactId))
+          .getFakeContact(parseInt(contactId))
           .then((contactDetails) => {
             this.contact = contactDetails;
+            this.changedContact = contactDetails;
             console.log(this.contact);
           })
           .catch((error) => {
             console.error(error);
-            // Maneja el error, por ejemplo, muestra un mensaje al usuario
           });
       }
     });
+  }
+
+  goToPreviousPage() {
+    this.location.back();
+  }
+
+  clickSubmit(contactForm: NgForm) {
+    console.log(this.contact);
+    console.log(this.changedContact);
   }
 }

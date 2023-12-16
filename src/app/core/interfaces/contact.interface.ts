@@ -1,9 +1,27 @@
-export interface Contact {
-  userId?: number;
-  id: number;
+// export interface Contact {
+//   Id: number;
+//   Name: string;
+//   LastName: string;
+//   Email: string;
+//   PhoneNumber: string;
+//   Location: string;
+//   ContactBookId: number;
+// }
+
+export interface ContactJsonPlaceholder {
+  Id?: number;
+  Name?: string;
+  LastName?: string;
+  Email?: string;
+  PhoneNumber?: string;
+  Location?: string;
+  ContactBookId?: number;
+}
+
+export interface FakeContactJsonPlaceholder {
+  id?: number;
   name?: string;
-  title?: string;
-  body?: string;
+  email?: string;
 }
 
 // export const defaultContact: Contact = {
@@ -37,20 +55,3 @@ export interface Contact {
 //   Number: '+5412345678',
 //   Description: 'Contact3',
 // };
-
-export interface ContactJsonPlaceholder {
-  userId?: number;
-  id?: number;
-  name?: string;
-  title?: string;
-  body?: string;
-}
-
-// export interface ContactJsonPlaceholder {
-//   id?: number;
-//   name?: string;
-//   username?: string;
-//   email?: string;
-//   phone?: string;
-//   website?: string;
-// }

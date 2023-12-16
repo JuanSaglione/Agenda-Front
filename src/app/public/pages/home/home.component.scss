@@ -1,0 +1,92 @@
+$color-blanco: rgb(201, 210, 225);
+$color-1: rgb(0, 25, 53);
+$color-2: rgb(15, 17, 27);
+$tipografia-1: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+  "Lucida Sans", Arial, sans-serif;
+
+button {
+  padding: 10px 20px;
+  border-radius: 10px;
+  color: $color-blanco;
+  background-color: $color-1;
+  margin-top: 20px;
+  font-family: $tipografia-1;
+  font-size: 20px;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+}
+button:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
+}
+
+#home {
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  color: $color-2;
+  background-size: cover;
+  background: rgb(122, 119, 136);
+  background: radial-gradient(
+    circle,
+    rgba(122, 119, 136, 1) 0%,
+    rgba(2, 0, 36, 1) 100%
+  );
+  font-family: $tipografia-1;
+}
+
+#login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: rgba(240, 234, 234, 0.164);
+  padding: 10px;
+  border-radius: 10px;
+  height: 230px;
+  margin-top: 120px;
+}
+
+#card-title {
+  color: $color-blanco;
+  text-shadow: 4px 4px 8px rgb(0, 0, 0, 0.3);
+  font-size: 2em;
+  margin: 0;
+}
+
+#home-contacts {
+  display: flex;
+  justify-content: space-evenly;
+  width: 800px;
+  flex-wrap: wrap;
+  font-size: large;
+}
+
+#contacts {
+  display: flex;
+  align-items: center;
+  height: 70px;
+  padding: 20px;
+  background: rgba(240, 234, 234, 0.164);
+  border-radius: 15px;
+  cursor: pointer;
+  margin-top: 190px;
+}
+#contacts:hover {
+  background: rgba(240, 234, 234, 0.312);
+}
+
+#shared-contacts {
+  display: flex;
+  align-items: center;
+  height: 70px;
+  padding: 20px;
+  text-align: center;
+  background: rgba(240, 234, 234, 0.164);
+  border-radius: 15px;
+  cursor: pointer;
+  margin-top: 190px;
+}
+
+#shared-contacts:hover {
+  background: rgba(240, 234, 234, 0.312);
+}

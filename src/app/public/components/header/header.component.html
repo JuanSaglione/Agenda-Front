@@ -1,6 +1,13 @@
-<ul>
-  <li>
-    <a [routerLink]="['']">Home</a>
-  </li>
-  <li><a [routerLink]="['contacts']">Contacts</a></li>
-</ul>
+<header>
+  <div class="container">
+    <h1 class="logo" title="Inicio" [routerLink]="['']">Agenda</h1>
+
+    <img
+      id="icon-signout"
+      *ngIf="isLogged() === true"
+      (click)="logOut()"
+      title="Salir"
+      src="./../../../../assets/icons/singout_black.png"
+    />
+  </div>
+</header>

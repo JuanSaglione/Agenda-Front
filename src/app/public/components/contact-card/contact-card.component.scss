@@ -1,26 +1,44 @@
-#number {
-  font-size: large;
-  font-weight: bold;
-}
-
-#name {
-  font-size: large;
-}
-
 #container {
-  border: 1px solid gray;
-  display: flex;
-  margin: 10px auto;
-  padding: 10px;
-  width: 400px;
-  justify-content: space-between;
-  align-items: center;
-  cursor: pointer;
-  &:hover {
-    background-color: bisque;
-  }
-}
+  display: grid;
+  grid-template-rows: auto auto auto auto;
+  gap: 10px;
+  background-color: #e2e2e2;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 10px;
+  padding: 15px;
+  width: 200px;
+  text-align: center;
+  text-decoration: none;
+  color: #333;
 
-#wp {
-  height: 30px;
+  grid-template-columns: 1fr 1fr;
+
+  #name {
+    margin: 0;
+    grid-column: span 2; /* Ocupa 2 columnas completas */
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+
+  #email {
+    color: #666;
+    grid-column: span 2;
+  }
+
+  #number {
+    grid-column: span 2;
+    font-weight: bold;
+  }
+
+  img {
+    cursor: pointer;
+    height: 30px;
+    justify-self: center;
+  }
+
+  &:hover img:hover {
+    transform: scale(1.15);
+  }
 }

@@ -5,9 +5,8 @@ $color-blanco: rgb(201, 210, 225);
 $color-1: rgb(0, 25, 53);
 
 #container {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+  height: 100vh;
+  color: $color-2;
   background: rgb(122, 119, 136);
   background: radial-gradient(
     circle,
@@ -16,25 +15,8 @@ $color-1: rgb(0, 25, 53);
   );
 }
 
-#back-button {
-  align-self: center;
-  padding: 10px;
-  border-radius: 10px;
-  margin-top: 30px;
-  font-size: 20px;
-  border: none;
-  background-color: $color-1;
-  color: $color-blanco;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
-  cursor: pointer;
-}
-#back-button:hover {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
-  background-color: $color-2;
-}
-
 .register-container {
-  margin: 30px auto;
+  margin: 60px auto;
   text-align: center;
   background: rgba(240, 234, 234, 0.164);
   padding: 10px;
@@ -45,13 +27,10 @@ $color-1: rgb(0, 25, 53);
     sans-serif;
 
   input {
-    margin: 10px 10px;
+    margin: 10px 0px;
     border: none;
     border-radius: 6px;
     padding: 8px;
-  }
-  input::placeholder {
-    text-align: center;
   }
 
   label {
@@ -71,7 +50,6 @@ $color-1: rgb(0, 25, 53);
     cursor: pointer;
     border: none;
     width: fit-content;
-    align-self: center;
   }
 
   button:enabled {
@@ -101,8 +79,24 @@ $color-1: rgb(0, 25, 53);
   display: flex;
 }
 
-.newContact-form {
+.register-form {
   display: flex;
   flex-direction: column;
+  align-items: center;
   margin-bottom: 25px;
+}
+
+#secondary-button {
+  background-color: inherit;
+  color: rgb(0, 0, 0);
+  border: none;
+  font-size: smaller;
+  padding: 0px;
+  margin: 0;
+  height: 15px;
+  box-shadow: none;
+}
+
+#secondary-button:hover {
+  text-decoration-line: underline;
 }

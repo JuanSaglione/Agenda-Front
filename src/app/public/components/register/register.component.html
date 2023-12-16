@@ -1,0 +1,75 @@
+<section id="container">
+  <div class="form-container">
+    <div class="register-container">
+      <h2>Register</h2>
+
+      <form
+        class="register-form"
+        #registerForm="ngForm"
+        (ngSubmit)="register(registerForm)"
+      >
+        <label for="name">Nombre:</label>
+        <input
+          type="name"
+          id="name"
+          name="name"
+          [(ngModel)]="registerData.name"
+          autocomplete="name"
+          placeholder="Ingresa tu nombre"
+          #name="ngModel"
+          [required]="true"
+        />
+        <p *ngIf="name.touched && name.errors">Nombre Requerido</p>
+
+        <label for="phoneNumber">Teléfono:</label>
+        <input
+          type="tel"
+          id="phoneNumber"
+          name="phoneNumber"
+          autocomplete="tel"
+          placeholder="Ingresa tu numero telefónico"
+          [(ngModel)]="registerData.phoneNumber"
+          #phoneNumber="ngModel"
+          maxlength="15"
+        />
+
+        <label for="email">Email:</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          autocomplete="email"
+          placeholder="Ingresa tu correo"
+          [(ngModel)]="registerData.email"
+          [required]="true"
+          #email="ngModel"
+          pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$"
+        />
+        <p *ngIf="email.touched && email.errors">
+          Correo electronico no válido
+        </p>
+
+        <label for="password">Contraseña:</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          autocomplete="current-password"
+          placeholder="Ingresa tu contraseña"
+          [(ngModel)]="registerData.password"
+          [required]="true"
+          minlength="6"
+          #password="ngModel"
+        />
+        <p *ngIf="password.touched && password.errors">Contraseña inválida</p>
+
+        <button type="submit" [disabled]="registerForm.invalid">
+          Registrarse
+        </button>
+        <button id="secondary-button" type="button" [routerLink]="['/auth']">
+          Iniciar sesión
+        </button>
+      </form>
+    </div>
+  </div>
+</section>

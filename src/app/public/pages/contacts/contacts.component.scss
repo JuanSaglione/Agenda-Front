@@ -1,0 +1,51 @@
+$color-blanco: rgb(201, 210, 225);
+$color-1: rgb(0, 25, 53);
+$color-2: rgb(15, 17, 27);
+$tipografia-1: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+  "Lucida Sans", Arial, sans-serif;
+
+#contacts-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  background: rgb(122, 119, 136);
+  background: radial-gradient(
+    circle,
+    rgba(122, 119, 136, 1) 0%,
+    rgba(2, 0, 36, 1) 100%
+  );
+}
+
+#contacts-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 20px;
+}
+
+#new-contact {
+  padding: 10px 20px;
+  border-radius: 10px;
+  color: $color-blanco;
+  background-color: $color-1;
+  margin-top: 20px;
+  font-family: $tipografia-1;
+  font-size: 20px;
+  cursor: pointer;
+  border: none;
+  width: 200px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+}
+
+#new-contact:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
+}
+
+#no-contacts-container {
+  height: 90vh;
+}
+
+#no-contacts {
+  margin-top: 130px;
+}

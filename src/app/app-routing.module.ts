@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { LoggedUserGuard } from './core/guards/logged-user.guard';
 
 const routes: Routes = [
   {
@@ -9,17 +10,17 @@ const routes: Routes = [
   },
   {
     path: 'contacts',
+
     loadChildren: () =>
       import('./public/pages/contacts/contacts.module').then(
         (m) => m.ContactsModule
       ),
   },
   {
-    path: 'register',
+    path: 'auth',
+    canActivate: [LoggedUserGuard],
     loadChildren: () =>
-      import('./public/pages/register/register.module').then(
-        (m) => m.RegisterModule
-      ),
+      import('./public/pages/auth/auth.module').then((m) => m.AuthModule),
   },
 ];
 
