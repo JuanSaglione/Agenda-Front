@@ -1,0 +1,10 @@
+<section id="contactBooks">
+  <div id="contactBooks-section">
+    <div id="noContactBooks" *ngIf="noContactBooks">{{ noContactBooks }}</div>
+    <span *ngIf="isLoading" class="loader"></span>
+    <div id="contactBook-card" *ngFor="let contactBook of contactBooks">
+      <a>{{ contactBook.id }}</a>
+      <a id="name">{{ contactBook.name }}</a>
+    </div>
+  </div>
+</section>

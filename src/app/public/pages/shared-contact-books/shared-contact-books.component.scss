@@ -1,0 +1,73 @@
+$color-blanco: rgb(201, 210, 225);
+$color-1: rgb(0, 25, 53);
+$color-2: rgb(15, 17, 27);
+$tipografia-1: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+  "Lucida Sans", Arial, sans-serif;
+
+#contactBooks {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  color: $color-2;
+  background: rgb(122, 119, 136);
+  background: radial-gradient(
+    circle,
+    rgba(122, 119, 136, 1) 0%,
+    rgba(2, 0, 36, 1) 100%
+  );
+  font-family: $tipografia-1;
+}
+
+#contactBook-card {
+  display: flex;
+  background-color: #e2e2e2;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 20px 0px;
+  padding: 15px;
+  width: 300px;
+  color: #333;
+  cursor: pointer;
+
+  a {
+    flex-grow: 1;
+  }
+}
+#contactBook-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+#name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+#noContactBooks {
+  font-size: xx-large;
+  font-weight: 700;
+  margin-top: 200px;
+}
+
+.loader {
+  margin-top: 80px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: inline-block;
+  border-top: 3px solid #fff;
+  border-right: 3px solid transparent;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

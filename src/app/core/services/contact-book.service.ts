@@ -20,6 +20,21 @@ export class ContactBookService {
     return await response.json();
   }
 
+  async getContactBooksOfUser(): Promise<ContactBookJsonPlaceHolder[]> {
+    const response = await fetch(
+      BACKEND_URL + '/contactBook/getContactBookOfUser',
+      {
+        method: 'GET',
+        headers: {
+          'Content-type': 'application/json',
+          Authorization: `Bearer ${this.auth.getSession().token!}`,
+        },
+      }
+    );
+    const contactBooks: ContactBookJsonPlaceHolder[] = await response.json();
+    return contactBooks;
+  }
+
   async createContactBook(contactBook: ContactBookJsonPlaceHolder) {
     const response = await fetch(BACKEND_URL + '/contactBook', {
       method: 'POST',

@@ -9,12 +9,20 @@ const routes: Routes = [
       import('./public/pages/home/home.module').then((m) => m.HomeModule),
   },
   {
-    path: 'contacts',
-
+    path: 'contactBooks',
+    canActivate: [LoggedUserGuard],
     loadChildren: () =>
-      import('./public/pages/contacts/contacts.module').then(
-        (m) => m.ContactsModule
+      import('./public/pages/contact-books/contact-books.module').then(
+        (m) => m.ContactBooksModule
       ),
+  },
+  {
+    path: 'sharedContactBooks',
+    canActivate: [LoggedUserGuard],
+    loadChildren: () =>
+      import(
+        './public/pages/shared-contact-books/shared-contact-books.module'
+      ).then((m) => m.SharedContactBooksModule),
   },
   {
     path: 'auth',

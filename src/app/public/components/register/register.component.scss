@@ -5,7 +5,9 @@ $color-blanco: rgb(201, 210, 225);
 $color-1: rgb(0, 25, 53);
 
 #container {
-  height: 100vh;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
   color: $color-2;
   background: rgb(122, 119, 136);
   background: radial-gradient(
@@ -13,6 +15,19 @@ $color-1: rgb(0, 25, 53);
     rgba(122, 119, 136, 1) 0%,
     rgba(2, 0, 36, 1) 100%
   );
+}
+
+.password-container {
+  position: relative;
+
+  .eye-slash {
+    position: absolute;
+    top: 3%;
+    right: -7px;
+    transform: scale(0.4);
+    cursor: pointer;
+    background-color: white;
+  }
 }
 
 .register-container {
@@ -99,4 +114,26 @@ $color-1: rgb(0, 25, 53);
 
 #secondary-button:hover {
   text-decoration-line: underline;
+}
+
+.loader {
+  justify-self: center;
+  margin-top: 200px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: inline-block;
+  border-top: 3px solid #fff;
+  border-right: 3px solid transparent;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

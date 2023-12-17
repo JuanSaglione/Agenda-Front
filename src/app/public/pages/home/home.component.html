@@ -5,7 +5,9 @@
     <button [routerLink]="['/auth/register']">Registrarse</button>
   </diV>
   <div *ngIf="isLogged() === true" id="home-contacts">
-    <div id="contacts" [routerLink]="['/contacts']">Tus contactos</div>
-    <div id="shared-contacts">Listas de contactos <br />compartidas</div>
+    <div id="contacts" [routerLink]="['/contactBooks']">Tus agendas</div>
+    <div id="shared-contacts" [routerLink]="['/sharedContactBooks']">
+      Agendas compartidas
+    </div>
   </div>
 </section>
