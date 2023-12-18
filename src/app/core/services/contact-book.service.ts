@@ -21,16 +21,13 @@ export class ContactBookService {
   }
 
   async getContactBooksOfUser(): Promise<ContactBookJsonPlaceHolder[]> {
-    const response = await fetch(
-      BACKEND_URL + '/contactBook/getContactBookOfUser',
-      {
-        method: 'GET',
-        headers: {
-          'Content-type': 'application/json',
-          Authorization: `Bearer ${this.auth.getSession().token!}`,
-        },
-      }
-    );
+    const response = await fetch(BACKEND_URL + '/ContactBook/getByUserId', {
+      method: 'GET',
+      headers: {
+        'Content-type': 'application/json',
+        Authorization: `Bearer ${this.auth.getSession().token!}`,
+      },
+    });
     const contactBooks: ContactBookJsonPlaceHolder[] = await response.json();
     return contactBooks;
   }
@@ -48,6 +45,7 @@ export class ContactBookService {
   }
 
   async addContactBookToUser(contactBookId: number) {
+    // para shared
     const response = await fetch(
       BACKEND_URL + '/contactBook/' + contactBookId,
       {

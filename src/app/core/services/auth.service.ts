@@ -31,7 +31,7 @@ export class AuthService {
   }
 
   async register(user: IRegisterRequest) {
-    const response = await fetch(BACKEND_URL + '/user', {
+    const response = await fetch(BACKEND_URL + '/authentication/createuser', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

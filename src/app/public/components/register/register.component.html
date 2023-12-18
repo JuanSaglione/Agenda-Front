@@ -42,7 +42,7 @@
         [(ngModel)]="registerData.email"
         [required]="true"
         #email="ngModel"
-        pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$"
+        pattern="^[\w\.-]+@[a-zA-Z\d\.-]+\.[a-zA-Z]{2,}$"
       />
       <p *ngIf="email.touched && email.errors">Correo electronico no válido</p>
 
