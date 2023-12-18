@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { IRegisterRequest, iAuthRequest } from '../interfaces/auth';
 import { BACKEND_URL } from '../constants/backend';
 import { ISession } from '../interfaces/session.interface';
+import { jwtDecode } from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root',
@@ -23,6 +24,13 @@ export class AuthService {
       console.log(token);
       if (!token) return false;
       this.setSession(token);
+      const tokenDecoded = jwtDecode(token);
+      const userId = tokenDecoded.sub;
+      console.log(tokenDecoded);
+      console.log(typeof userId);
+      if (userId) {
+        this.setUserId(userId);
+      }
       return true;
     } catch (error) {
       console.log(error);
@@ -84,6 +92,16 @@ export class AuthService {
     //window.location.reload();
   }
 
+  setUserId(userId: string) {
+    localStorage.setItem('id', userId);
+  }
+
+  getUserId() {
+    const id = localStorage.getItem('id');
+    if (id) return parseInt(id);
+    return null;
+  }
+
   async getMe() {
     const res = await fetch('', {
       headers: {
@@ -95,6 +113,7 @@ export class AuthService {
 
   resetSession() {
     localStorage.removeItem('session');
+    localStorage.removeItem('id');
     this.loggedIn = false;
     console.log('logged out');
   }
