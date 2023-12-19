@@ -1,0 +1,12 @@
+<section id="shared-contacts-page">
+    <h2>{{ contactBook.contactBookName }}</h2>
+    <main id="shared-contacts-container" *ngIf="contactsData.length > 0">
+      <app-shared-contact-card
+        *ngFor="let contact of contactsData"
+        [contact]="contact"
+      ></app-shared-contact-card>
+    </main>
+    <section id="no-shared-contacts-container" *ngIf="contactsData.length === 0">
+      <div id="no-shared-contacts">No hay contactos compartidos</div>
+    </section>
+  </section>

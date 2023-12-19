@@ -4,6 +4,11 @@ import { SharedContactBooksComponent } from './shared-contact-books.component';
 
 const routes: Routes = [
   {
+    path: ':SharedContactBookId/sharedContacts',
+    loadChildren: () =>
+      import('../shared-contacts/shared-contacts.module').then((m) => m.SharedContactsModule),
+  },
+  {
     path: '',
     component: SharedContactBooksComponent,
   },
