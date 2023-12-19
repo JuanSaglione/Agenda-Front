@@ -17,6 +17,12 @@ $tipografia-1: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
   );
 }
 
+#contactBook-title {
+  text-align: center;
+  color: $color-blanco;
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+}
+
 #contacts-container {
   display: flex;
   flex-wrap: wrap;
@@ -29,7 +35,7 @@ $tipografia-1: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
   border-radius: 10px;
   color: $color-blanco;
   background-color: $color-1;
-  margin-top: 20px;
+  margin: 20px 0px;
   font-family: $tipografia-1;
   font-size: 20px;
   cursor: pointer;

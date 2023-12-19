@@ -1,7 +1,7 @@
 <section *ngIf="!newContactBook" id="contactBooks">
   <button (click)="addContactBook()" id="new-contact-book">Crear Agenda</button>
   <div id="contactBooks-section">
-    <div id="noContactBooks" *ngIf="noContactBooks">{{ noContactBooks }}</div>
+    <div id="noContactBooks" *ngIf="noContactBooks">No tenés Agendas</div>
     <span *ngIf="isLoading" class="loader"></span>
     <div
       id="contactBook-card"

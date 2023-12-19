@@ -1,0 +1,18 @@
+<!-- <h2 id="title" mat-dialog-title>PopUp</h2> -->
+<div id="content" mat-dialog-content>{{ data.message }}</div>
+<div id="actions" mat-dialog-actions>
+  <button
+    *ngIf="data.type === 'closeSession'"
+    id="button"
+    (click)="action()"
+    mat-dialog-close
+  >
+    Sí
+  </button>
+  <button *ngIf="data.type !== 'closeSession'" id="ok-button" mat-dialog-close>
+    Ok
+  </button>
+  <button *ngIf="data.type === 'closeSession'" id="button" mat-dialog-close>
+    No
+  </button>
+</div>

@@ -3,6 +3,8 @@ import { NgForm } from '@angular/forms';
 import { ContactBookJsonPlaceHolder } from 'src/app/core/interfaces/contactBook.interface';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { ContactBookService } from 'src/app/core/services/contact-book.service';
+import { PopUpComponent } from '../../components/pop-up/pop-up.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-contact-books',
@@ -16,13 +18,14 @@ export class ContactBooksComponent implements OnInit {
     description: '',
   };
   isLoading: boolean = true;
-  noContactBooks!: string;
+  noContactBooks: boolean = false;
   newContactBook: boolean = false;
   userId = this.auth.getUserId();
 
   constructor(
     private cBService: ContactBookService,
-    private auth: AuthService
+    private auth: AuthService,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -34,7 +37,10 @@ export class ContactBooksComponent implements OnInit {
     if (this.userId) {
       const response = await this.cBService.getContactBooksOfUser(this.userId);
       if (response.length === 0) {
-        this.noContactBooks = 'No tenés agendas';
+        this.isLoading = false;
+        this.noContactBooks = true;
+      } else {
+        this.noContactBooks = false;
       }
       this.isLoading = false;
       this.contactBooks = response;
@@ -51,8 +57,20 @@ export class ContactBooksComponent implements OnInit {
       newContactBookform.value
     );
     if (response) {
+      this.openPopUp('Agenda creada correctamente');
       this.getContactBooks();
       this.newContactBook = !this.newContactBook;
     }
+  }
+
+  openPopUp(msg: string) {
+    this.dialog.open(PopUpComponent, {
+      width: '200px',
+      height: '130px',
+      data: {
+        message: msg,
+        type: 'ok',
+      },
+    });
   }
 }

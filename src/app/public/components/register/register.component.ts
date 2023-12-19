@@ -1,8 +1,10 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
 import { IRegisterRequest } from 'src/app/core/interfaces/auth';
 import { AuthService } from 'src/app/core/services/auth.service';
+import { PopUpComponent } from '../pop-up/pop-up.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -14,7 +16,11 @@ export class RegisterComponent {
   @ViewChild('passwordInput') passwordInput!: ElementRef;
   source: string = '../../../../assets/icons/visible.png';
 
-  constructor(private auth: AuthService, private router: Router) {}
+  constructor(
+    private auth: AuthService,
+    private dialog: MatDialog,
+    private router: Router
+  ) {}
 
   registerData: IRegisterRequest = {
     name: '',
@@ -27,7 +33,7 @@ export class RegisterComponent {
     this.isLoading = true;
     const user = await this.auth.register(registerForm.value);
     this.isLoading = false;
-    if (user) this.router.navigateByUrl('/auth/login'); //cuando nos registramos nos lleva al login
+    if (user) this.openPopUp(); //cuando nos registramos abre el pop up que te lleva al login
   }
 
   togglePasswordVisibility(): void {
@@ -38,5 +44,25 @@ export class RegisterComponent {
       passwordInput.type === 'password'
         ? '../../../../assets/icons/visible.png'
         : '../../../../assets/icons/invisible.png';
+  }
+
+  openPopUp() {
+    const dialogRef = this.dialog.open(PopUpComponent, {
+      width: '200px',
+      height: '200px',
+      data: {
+        message: 'Registro correcto, por favor, ingrese con sus datos',
+        type: 'navigate',
+        route: '/auth/login',
+      },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      // Verifica si el diálogo se cerró sin hacer clic en los botones específicos
+      if (!result) {
+        // Ejecuta la acción deseada
+        this.router.navigateByUrl('/auth/login');
+      }
+    });
   }
 }

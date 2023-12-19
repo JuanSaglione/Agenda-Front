@@ -1,6 +1,9 @@
 <section id="contacts-page">
+  <h2 id="contactBook-title">
+    AGENDA: <br />{{ contactBook.contactBookName }}
+  </h2>
   <button id="new-contact" [routerLink]="['new']">Agregar contacto</button>
-  <h2>{{ contactBook.contactBookName }}</h2>
+
   <main id="contacts-container" *ngIf="contactsData.length > 0">
     <app-contact-card
       *ngFor="let contact of contactsData"

@@ -2,7 +2,11 @@
   <p id="name">{{ contact.name }} {{ contact.lastName }}</p>
   <a id="number">{{ contact.phoneNumber }} </a>
   <span id="email">{{ contact.email }}</span>
-  <img title="Eliminar" src="../../../../assets/icons/eliminar.png" />
+  <img
+    title="Eliminar"
+    (click)="deleteContact(contact.id)"
+    src="../../../../assets/icons/eliminar.png"
+  />
   <img
     title="Editar"
     src="../../../../assets/icons/editar-contacto.png"

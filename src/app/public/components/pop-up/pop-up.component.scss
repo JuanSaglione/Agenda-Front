@@ -1,0 +1,32 @@
+$color-2: rgb(15, 17, 27);
+$tipografia-1: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+  "Lucida Sans", Arial, sans-serif;
+$color-blanco: rgb(201, 210, 225);
+$color-1: rgb(0, 25, 53);
+
+button {
+  padding: 5px;
+  border-radius: 6px;
+  cursor: pointer;
+  border: none;
+  background-color: $color-1;
+  color: $color-blanco;
+  width: 65px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+button:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  background-color: $color-2;
+}
+
+#ok-button {
+  margin-left: 44px;
+}
+#actions {
+  justify-content: space-between;
+}
+#content {
+  text-align: center;
+}

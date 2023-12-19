@@ -1,8 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-  ContactJsonPlaceholder,
-  FakeContactJsonPlaceholder,
-} from '../interfaces/contact.interface';
+import { ContactJsonPlaceholder } from '../interfaces/contact.interface';
 import { AuthService } from './auth.service';
 import { BACKEND_URL } from '../constants/backend';
 
@@ -62,6 +59,7 @@ export class ContactService {
       },
       body: JSON.stringify(contact),
     });
+    console.log(response.json());
     return await response.json();
   }
 
@@ -79,6 +77,29 @@ export class ContactService {
       }
     );
     return await response.json();
+  }
+
+  async deleteContact(contactId: number) {
+    try {
+      const response = await fetch(
+        BACKEND_URL + '/Contact/deleteContact/' + contactId,
+        {
+          method: 'DELETE',
+          headers: {
+            'Content-type': 'application/json',
+            Authorization: `Bearer ${this.auth.getSession().token!}`,
+          },
+        }
+      );
+
+      if (response.ok) {
+        return response.ok;
+      }
+      return false;
+    } catch (error) {
+      console.log(error);
+      return false;
+    }
   }
 
   // async getFakeData(): Promise<FakeContactJsonPlaceholder[]> {
