@@ -1,6 +1,5 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ContactJsonPlaceholder } from 'src/app/core/interfaces/contact.interface';
 import { ContactService } from 'src/app/core/services/contact.service';
@@ -11,8 +10,13 @@ import { ContactService } from 'src/app/core/services/contact.service';
   styleUrls: ['./contact-details.component.scss'],
 })
 export class ContactDetailsComponent implements OnInit {
-  changedContact!: ContactJsonPlaceholder;
-  contact!: ContactJsonPlaceholder;
+  contact: ContactJsonPlaceholder = {
+    name: '',
+    lastName: '',
+    email: '',
+    phoneNumber: '',
+    location: '',
+  };
 
   constructor(
     private route: ActivatedRoute,
@@ -29,7 +33,6 @@ export class ContactDetailsComponent implements OnInit {
           .getContactDetails(parseInt(contactId))
           .then((contactDetails) => {
             this.contact = contactDetails;
-            this.changedContact = contactDetails;
             console.log(this.contact);
           })
           .catch((error) => {
@@ -43,9 +46,10 @@ export class ContactDetailsComponent implements OnInit {
     this.location.back();
   }
 
-  clickSubmit(contactForm: NgForm) {
-    console.log(contactForm.value);
-    console.log(this.contact);
-    console.log(this.changedContact);
+  async clickSubmit() {
+    const response = await this.contactS.updateContact(this.contact);
+    if (response) {
+      console.log(response);
+    }
   }
 }

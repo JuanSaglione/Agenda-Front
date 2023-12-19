@@ -6,21 +6,16 @@
       <form
         class="contact-details-form"
         #contactForm="ngForm"
-        (ngSubmit)="clickSubmit(contactForm)"
+        (ngSubmit)="clickSubmit()"
       >
         <label for="name">Nombre:</label>
-        <input
-          type="text"
-          id="name"
-          [(ngModel)]="changedContact.name"
-          name="name"
-        />
+        <input type="text" id="name" [(ngModel)]="contact.name" name="name" />
 
         <label for="lastName">Apellido:</label>
         <input
           type="text"
           id="lastName"
-          [(ngModel)]="changedContact.lastName"
+          [(ngModel)]="contact.lastName"
           name="lastName"
         />
 
@@ -28,8 +23,16 @@
         <input
           type="email"
           id="email"
-          [(ngModel)]="changedContact.email"
+          [(ngModel)]="contact.email"
           name="email"
+        />
+
+        <label for="email">Teléfono:</label>
+        <input
+          type="tel"
+          id="phoneNumber"
+          [(ngModel)]="contact.phoneNumber"
+          name="phoneNumber"
         />
 
         <button type="submit">Guardar</button>

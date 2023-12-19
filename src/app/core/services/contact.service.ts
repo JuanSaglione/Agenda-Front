@@ -65,6 +65,22 @@ export class ContactService {
     return await response.json();
   }
 
+  async updateContact(contact: ContactJsonPlaceholder) {
+    console.log(contact);
+    const response = await fetch(
+      BACKEND_URL + '/Contact/updateContact/' + contact.id,
+      {
+        method: 'PUT',
+        headers: {
+          'Content-type': 'application/json',
+          Authorization: `Bearer ${this.auth.getSession().token!}`,
+        },
+        body: JSON.stringify(contact),
+      }
+    );
+    return await response.json();
+  }
+
   // async getFakeData(): Promise<FakeContactJsonPlaceholder[]> {
   //   const response = await fetch('https://jsonplaceholder.typicode.com/users');
   //   const fakeContacts: FakeContactJsonPlaceholder[] = await response.json();
