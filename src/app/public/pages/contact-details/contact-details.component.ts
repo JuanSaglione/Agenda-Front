@@ -2,10 +2,7 @@ import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import {
-  ContactJsonPlaceholder,
-  FakeContactJsonPlaceholder,
-} from 'src/app/core/interfaces/contact.interface';
+import { ContactJsonPlaceholder } from 'src/app/core/interfaces/contact.interface';
 import { ContactService } from 'src/app/core/services/contact.service';
 
 @Component({
@@ -14,8 +11,8 @@ import { ContactService } from 'src/app/core/services/contact.service';
   styleUrls: ['./contact-details.component.scss'],
 })
 export class ContactDetailsComponent implements OnInit {
-  changedContact!: FakeContactJsonPlaceholder;
-  contact!: FakeContactJsonPlaceholder;
+  changedContact!: ContactJsonPlaceholder;
+  contact!: ContactJsonPlaceholder;
 
   constructor(
     private route: ActivatedRoute,
@@ -25,11 +22,11 @@ export class ContactDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
-      const contactId = params.get('id');
+      const contactId = params.get('contactId');
 
       if (contactId) {
         this.contactS
-          .getFakeContact(parseInt(contactId))
+          .getContactDetails(parseInt(contactId))
           .then((contactDetails) => {
             this.contact = contactDetails;
             this.changedContact = contactDetails;
@@ -47,6 +44,7 @@ export class ContactDetailsComponent implements OnInit {
   }
 
   clickSubmit(contactForm: NgForm) {
+    console.log(contactForm.value);
     console.log(this.contact);
     console.log(this.changedContact);
   }

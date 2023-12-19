@@ -9,13 +9,13 @@
 // }
 
 export interface ContactJsonPlaceholder {
-  Id?: number;
-  Name?: string;
-  LastName?: string;
-  Email?: string;
-  PhoneNumber?: string;
-  Location?: string;
-  ContactBookId?: number;
+  id?: number;
+  name?: string;
+  lastName?: string;
+  email?: string;
+  phoneNumber?: string;
+  location?: string;
+  contactBookId?: number;
 }
 
 export interface FakeContactJsonPlaceholder {

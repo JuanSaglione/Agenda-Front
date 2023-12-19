@@ -1,11 +1,61 @@
-<section id="contactBooks">
-  <button id="new-contact-book">Crear Agenda</button>
+<section *ngIf="!newContactBook" id="contactBooks">
+  <button (click)="addContactBook()" id="new-contact-book">Crear Agenda</button>
   <div id="contactBooks-section">
     <div id="noContactBooks" *ngIf="noContactBooks">{{ noContactBooks }}</div>
     <span *ngIf="isLoading" class="loader"></span>
-    <div id="contactBook-card" *ngFor="let contactBook of contactBooks">
+    <div
+      id="contactBook-card"
+      *ngFor="let contactBook of contactBooks"
+      [routerLink]="'/contactBooks/' + contactBook.id + '/contacts'"
+    >
       <a>{{ contactBook.id }}</a>
-      <a id="name">{{ contactBook.name }}</a>
+      <a id="name">{{ contactBook.contactBookName }}</a>
+    </div>
+  </div>
+</section>
+
+<section *ngIf="newContactBook" id="container">
+  <button id="back-button" (click)="addContactBook()">Volver</button>
+  <div class="form-container">
+    <div class="register-container">
+      <h2>Nueva Agenda</h2>
+
+      <form
+        class="newContact-form"
+        #newContactBookform="ngForm"
+        (ngSubmit)="createContactBook(newContactBookform)"
+      >
+        <label for="contactBookName">Nombre:</label>
+        <input
+          type="text"
+          id="contactBookName"
+          name="contactBookName"
+          maxlength="20"
+          placeholder="Nombre de la nueva agenda"
+          [(ngModel)]="newContactBookPlaceholder.contactBookName"
+          #contactBookName="ngModel"
+          [required]="true"
+        />
+        <p *ngIf="contactBookName.touched && contactBookName.errors">
+          Nombre requerido
+        </p>
+
+        <label for="description">Description</label>
+        <input
+          type="text"
+          id="description"
+          name="description"
+          maxlength="30"
+          placeholder="Descripción de la nueva agenda"
+          [(ngModel)]="newContactBookPlaceholder.description"
+          #description="ngModel"
+          [required]="true"
+        />
+
+        <button type="submit" [disabled]="newContactBookform.invalid">
+          Agregar Agenda
+        </button>
+      </form>
     </div>
   </div>
 </section>

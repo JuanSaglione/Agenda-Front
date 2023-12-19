@@ -1,8 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import {
-  ContactJsonPlaceholder,
-  FakeContactJsonPlaceholder,
-} from 'src/app/core/interfaces/contact.interface';
+import { ContactJsonPlaceholder } from 'src/app/core/interfaces/contact.interface';
 
 @Component({
   selector: 'app-contact-card',
@@ -12,7 +9,9 @@ import {
 export class ContactCardComponent implements OnInit {
   constructor() {}
 
-  @Input() contact: FakeContactJsonPlaceholder = {};
+  @Input() contact: ContactJsonPlaceholder = {};
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log(this.contact);
+  }
 }

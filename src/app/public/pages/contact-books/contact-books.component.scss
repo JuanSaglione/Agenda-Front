@@ -89,3 +89,106 @@ $tipografia-1: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     transform: rotate(360deg);
   }
 }
+
+#container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: rgb(122, 119, 136);
+  background: radial-gradient(
+    circle,
+    rgba(122, 119, 136, 1) 0%,
+    rgba(2, 0, 36, 1) 100%
+  );
+}
+
+#back-button {
+  align-self: center;
+  padding: 10px;
+  border-radius: 10px;
+  margin-top: 30px;
+  font-size: 20px;
+  border: none;
+  background-color: $color-1;
+  color: $color-blanco;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+  cursor: pointer;
+}
+#back-button:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
+  background-color: $color-2;
+}
+
+.register-container {
+  margin: 30px auto;
+  text-align: center;
+  background: rgba(240, 234, 234, 0.164);
+  padding: 10px;
+  border-radius: 10px;
+  height: fit-content;
+  width: 300px;
+  font-family: "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
+
+  input {
+    margin: 10px 10px;
+    border: none;
+    border-radius: 6px;
+    padding: 8px;
+  }
+  input::placeholder {
+    text-align: center;
+  }
+
+  label {
+    font-family: system-ui, "Segoe UI", "Open Sans", "Helvetica Neue",
+      sans-serif;
+  }
+
+  h2 {
+    font-size: 2em;
+  }
+
+  button {
+    padding: 10px;
+    border-radius: 10px;
+    margin: 10px 0px;
+    font-size: 20px;
+    cursor: pointer;
+    border: none;
+    width: fit-content;
+    align-self: center;
+  }
+
+  button:enabled {
+    background-color: $color-1;
+    color: $color-blanco;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+    cursor: pointer;
+  }
+
+  button:enabled:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
+    background-color: $color-2;
+  }
+
+  button:disabled {
+    cursor: auto;
+  }
+
+  p {
+    font-size: small;
+    color: rgb(212, 61, 61);
+    margin: 0;
+  }
+}
+
+.form-container {
+  display: flex;
+}
+
+.newContact-form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 25px;
+}

@@ -20,20 +20,40 @@ export class ContactBookService {
     return await response.json();
   }
 
-  async getContactBooksOfUser(): Promise<ContactBookJsonPlaceHolder[]> {
-    const response = await fetch(BACKEND_URL + '/ContactBook/getByUserId', {
-      method: 'GET',
-      headers: {
-        'Content-type': 'application/json',
-        Authorization: `Bearer ${this.auth.getSession().token!}`,
-      },
-    });
+  async getContactBooksOfUser(
+    userId: number
+  ): Promise<ContactBookJsonPlaceHolder[]> {
+    const response = await fetch(
+      BACKEND_URL + '/ContactBook/getByUserId/' + userId,
+      {
+        method: 'GET',
+        headers: {
+          'Content-type': 'application/json',
+          Authorization: `Bearer ${this.auth.getSession().token!}`,
+        },
+      }
+    );
     const contactBooks: ContactBookJsonPlaceHolder[] = await response.json();
     return contactBooks;
   }
 
+  async getContactBookById(contactBookId: number) {
+    const response = await fetch(
+      BACKEND_URL + '/ContactBook/getById/' + contactBookId,
+      {
+        method: 'GET',
+        headers: {
+          'Content-type': 'application/json',
+          Authorization: `Bearer ${this.auth.getSession().token!}`,
+        },
+      }
+    );
+    return response.json();
+  }
+
   async createContactBook(contactBook: ContactBookJsonPlaceHolder) {
-    const response = await fetch(BACKEND_URL + '/contactBook', {
+    console.log(contactBook);
+    const response = await fetch(BACKEND_URL + '/ContactBook/create', {
       method: 'POST',
       headers: {
         'Content-type': 'application/json',
@@ -44,8 +64,8 @@ export class ContactBookService {
     return await response.json();
   }
 
+  // para sharedContactBooks
   async addContactBookToUser(contactBookId: number) {
-    // para shared
     const response = await fetch(
       BACKEND_URL + '/contactBook/' + contactBookId,
       {

@@ -1,11 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ContactBooksComponent } from './contact-books.component';
-import { ContactsComponent } from '../contacts/contacts.component';
 
 const routes: Routes = [
   {
-    path: ':id/contacts',
+    path: ':contactBookId/contacts',
     loadChildren: () =>
       import('../contacts/contacts.module').then((m) => m.ContactsModule),
   },

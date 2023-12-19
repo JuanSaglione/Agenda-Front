@@ -4,7 +4,11 @@
     <div class="register-container">
       <h2>Nuevo Contacto</h2>
 
-      <form class="newContact-form" #newContactForm="ngForm">
+      <form
+        class="newContact-form"
+        #newContactForm="ngForm"
+        (ngSubmit)="createContact(newContactForm)"
+      >
         <label for="name">Nombre:</label>
         <input
           type="text"
@@ -12,7 +16,7 @@
           name="name"
           maxlength="20"
           placeholder="Nombre del nuevo contacto"
-          [(ngModel)]="contactData.Name"
+          [(ngModel)]="contactData.name"
           #name="ngModel"
           [required]="true"
         />
@@ -25,7 +29,7 @@
           name="lastName"
           maxlength="20"
           placeholder="Apellido del nuevo contacto"
-          [(ngModel)]="contactData.LastName"
+          [(ngModel)]="contactData.lastName"
           #lastName="ngModel"
         />
 
@@ -35,7 +39,7 @@
           id="email"
           name="email"
           placeholder="Correo del nuevo contacto"
-          [(ngModel)]="contactData.Email"
+          [(ngModel)]="contactData.email"
           #email="ngModel"
           pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$"
           [required]="true"
@@ -51,21 +55,13 @@
           name="phoneNumber"
           placeholder="Número del nuevo contacto"
           [required]="true"
-          [(ngModel)]="contactData.PhoneNumber"
+          [(ngModel)]="contactData.phoneNumber"
           #phoneNumber="ngModel"
           maxlength="15"
         />
         <p *ngIf="phoneNumber.touched && phoneNumber.errors">
           Teléfono Requerido
         </p>
-
-        <label for="direction">Dirección:</label>
-        <input
-          type="text"
-          id="direction"
-          name="direction"
-          placeholder="Dirección del nuevo contacto"
-        />
 
         <button type="submit" [disabled]="newContactForm.invalid">
           Agregar Contacto

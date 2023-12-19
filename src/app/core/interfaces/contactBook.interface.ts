@@ -1,4 +1,5 @@
 export interface ContactBookJsonPlaceHolder {
   id?: number;
-  name?: string;
+  contactBookName?: string;
+  description?: string;
 }
