@@ -1,10 +1,20 @@
-<section id="contactBooks">
-  <div id="contactBooks-section">
-    <div id="noContactBooks" *ngIf="noContactBooks">{{ noContactBooks }}</div>
+<section id="sharedContactBooks">
+  <h1>Tus Agendas Compartidas</h1>
+  <div id="sharedContactBooks-section">
+    <div id="noSharedContactBooks" *ngIf="noSharedContactBooks">{{ noSharedContactBooks }}</div>
     <span *ngIf="isLoading" class="loader"></span>
-    <div id="contactBook-card" *ngFor="let contactBook of contactBooks">
-      <a>{{ contactBook.id }}</a>
-      <a id="name">{{ contactBook.name }}</a>
+    <div id="sharedContactBook-card" *ngFor="let sharedContactBook of sharedContactBooks">
+      <div class="book">
+        <div class="cover">
+          <!-- Puedes agregar un ícono o imagen de librito aquí -->
+          📖
+        </div>
+        <div class="details">
+          <p><strong>Nombre:</strong> {{ sharedContactBook.contactBookName }}</p>
+          <p><strong>Descripción:</strong> {{ sharedContactBook.description }}</p>
+          <p><strong>Dueño:</strong> {{ sharedContactBook.ownerUserId }}</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>

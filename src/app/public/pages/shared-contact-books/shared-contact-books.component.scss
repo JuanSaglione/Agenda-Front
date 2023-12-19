@@ -1,58 +1,76 @@
 $color-blanco: rgb(201, 210, 225);
 $color-1: rgb(0, 25, 53);
 $color-2: rgb(15, 17, 27);
-$tipografia-1: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-  "Lucida Sans", Arial, sans-serif;
+$tipografia-1: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
 
-#contactBooks {
+#sharedContactBooks {
   display: flex;
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
   color: $color-2;
   background: rgb(122, 119, 136);
-  background: radial-gradient(
-    circle,
-    rgba(122, 119, 136, 1) 0%,
-    rgba(2, 0, 36, 1) 100%
-  );
+  background: radial-gradient(circle, rgba(122, 119, 136, 1) 0%, rgba(2, 0, 36, 1) 100%);
   font-family: $tipografia-1;
 }
 
-#contactBook-card {
-  display: flex;
-  background-color: #e2e2e2;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  margin: 20px 0px;
-  padding: 15px;
-  width: 300px;
-  color: #333;
-  cursor: pointer;
+h1 {
+  color: $color-blanco;
+  font-size: 2em;
+  margin-bottom: 20px;
+}
 
-  a {
-    flex-grow: 1;
+#sharedContactBook-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+
+  .book {
+    background-color: #e2e2e2;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    width: 300px;
+    color: #333;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+
+    &:hover {
+      transform: scale(1.05);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .agenda-shape {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 4em;
+      color: $color-blanco;
+      opacity: 0.1;
+    }
+
+    .details {
+      margin-top: 10px;
+
+      p {
+        margin: 5px 0;
+      }
+    }
   }
 }
-#contactBook-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-}
-#name {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
 
-#noContactBooks {
+#noSharedContactBooks {
   font-size: xx-large;
   font-weight: 700;
-  margin-top: 200px;
+  margin-top: 20px;
 }
 
 .loader {
-  margin-top: 80px;
+  margin-top: 20px;
   width: 48px;
   height: 48px;
   border-radius: 50%;
