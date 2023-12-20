@@ -25,6 +25,14 @@ const routes: Routes = [
       ).then((m) => m.SharedContactBooksModule),
   },
   {
+    path: 'userDetail',
+    canActivate: [LoggedUserGuard],
+    loadChildren: () =>
+      import('./public/pages/user-detail/user-detail.module').then(
+        (m) => m.UserDetailModule
+      ),
+  },
+  {
     path: 'auth',
     canActivate: [LoggedUserGuard],
     loadChildren: () =>

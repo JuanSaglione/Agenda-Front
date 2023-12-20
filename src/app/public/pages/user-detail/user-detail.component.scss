@@ -1,0 +1,98 @@
+/* user-detail.component.scss */
+
+/* User Detail Container */
+.user-detail-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 30px auto;
+}
+
+/* User Detail Form */
+.user-detail-form {
+  max-width: 400px;
+  width: 80%;
+  text-align: center;
+  background: rgba(240, 234, 234, 0.164);
+  padding: 20px;
+  border-radius: 10px;
+  font-family: "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #333; /* Change the color as needed */
+  }
+
+  /* Form Styling */
+  form {
+    display: flex;
+    flex-direction: column;
+
+    label {
+      text-align: left;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+
+    input {
+      margin-bottom: 15px;
+      padding: 10px;
+      border: 1px solid #333; /* Change the color as needed */
+      border-radius: 6px;
+      font-size: 16px;
+      box-sizing: border-box;
+    }
+
+    button {
+      padding: 12px;
+      border-radius: 10px;
+      font-size: 18px;
+      cursor: pointer;
+      border: none;
+      background-color: #007bff; /* Change the color as needed */
+      color: #fff; /* Change the color as needed */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+      align-self: center;
+      transition: background-color 0.3s ease;
+
+      &:enabled {
+        &:hover {
+          background-color: darken(#007bff, 10%);
+        }
+      }
+
+      &:disabled {
+        cursor: auto;
+      }
+    }
+
+    p {
+      font-size: small;
+      color: rgb(212, 61, 61);
+      margin: 0;
+    }
+  }
+}
+
+/* Additional Styles (customize as needed) */
+
+/* Example: Styling for the Edit button */
+.user-detail-form button[type="button"]:first-child {
+  background-color: #28a745; /* Change the color as needed */
+  color: #fff; /* Change the color as needed */
+}
+
+.user-detail-form button[type="button"]:first-child:enabled:hover {
+  background-color: darken(#28a745, 10%);
+}
+
+/* Example: Styling for the Delete button */
+.user-detail-form button[type="button"]:last-child {
+  background-color: #dc3545; /* Change the color as needed */
+  color: #fff; /* Change the color as needed */
+}
+
+.user-detail-form button[type="button"]:last-child:enabled:hover {
+  background-color: darken(#dc3545, 10%);
+}

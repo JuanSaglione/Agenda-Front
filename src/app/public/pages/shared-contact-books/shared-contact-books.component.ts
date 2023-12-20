@@ -19,6 +19,7 @@ export class SharedContactBooksComponent implements OnInit {
   isLoading: boolean = true;
   noSharedContactBooks!: string;
   userId = this.auth.getUserId();
+  //ownerUserName = this.user.getUserById(this.newSharedContactBookPlaceholder.ownerUserId)
 
   constructor(
     private scbService: SharedContactBookService,
