@@ -1,9 +1,11 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ContactJsonPlaceholder } from 'src/app/core/interfaces/contact.interface';
 import { ContactService } from 'src/app/core/services/contact.service';
+import { PopUpComponent } from '../../components/pop-up/pop-up.component';
+import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-new-contact',
   templateUrl: './new-contact.component.html',
@@ -13,7 +15,8 @@ export class NewContactComponent implements OnInit {
   constructor(
     private location: Location,
     private contactS: ContactService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private dialog: MatDialog
   ) {}
 
   contactData: ContactJsonPlaceholder = {
@@ -46,7 +49,34 @@ export class NewContactComponent implements OnInit {
   async createContact(newContactForm: NgForm) {
     console.log(newContactForm.value);
 
-    await this.contactS.createContact(this.contactData);
+    const response = await this.contactS.createContact(this.contactData);
+    if (response) {
+      this.openPopUp('Contacto creado correctamente');
+      newContactForm.resetForm();
+      this.contactData = {
+        name: '',
+        lastName: '',
+        email: '',
+        phoneNumber: '',
+        location: '',
+        contactBookId: 0,
+      };
+    }
+  }
+
+  openPopUp(msg: string) {
+    const dialogRef = this.dialog.open(PopUpComponent, {
+      width: '200px',
+      height: '130px',
+      data: {
+        message: msg,
+        type: 'ok',
+      },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      this.goToPreviousPage();
+    });
   }
 
   // async addContact(newContactForm: NgForm) {

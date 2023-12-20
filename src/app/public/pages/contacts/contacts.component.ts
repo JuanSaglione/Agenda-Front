@@ -4,6 +4,9 @@ import { ContactJsonPlaceholder } from 'src/app/core/interfaces/contact.interfac
 import { ContactBookJsonPlaceHolder } from 'src/app/core/interfaces/contactBook.interface';
 import { ContactBookService } from 'src/app/core/services/contact-book.service';
 import { ContactService } from 'src/app/core/services/contact.service';
+import { SharedContactBookService } from 'src/app/core/services/shared-contact-book.service';
+import { PopUpComponent } from '../../components/pop-up/pop-up.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-contacts',
@@ -13,11 +16,18 @@ import { ContactService } from 'src/app/core/services/contact.service';
 export class ContactsComponent implements OnInit {
   contactsData: ContactJsonPlaceholder[] = [];
   contactBook: ContactBookJsonPlaceHolder = {};
+  contactBookId!: number;
+  shContactBook: boolean = false;
+  sharedEmail: any = {
+    email: '',
+  };
 
   constructor(
     private contactS: ContactService,
     private contactB: ContactBookService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private dialog: MatDialog,
+    private shService: SharedContactBookService
   ) {}
 
   ngOnInit(): void {
@@ -27,10 +37,12 @@ export class ContactsComponent implements OnInit {
   async getData() {
     this.route.paramMap.subscribe(async (params) => {
       const contactBookId = params.get('contactBookId');
+
       console.log(contactBookId);
 
       if (contactBookId) {
         try {
+          this.contactBookId = parseInt(contactBookId);
           this.contactBook = await this.contactB.getContactBookById(
             parseInt(contactBookId)
           );
@@ -43,5 +55,29 @@ export class ContactsComponent implements OnInit {
         }
       }
     });
+  }
+
+  async shareContactBook(email: string) {
+    const response = await this.shService.shareContactBook(
+      this.contactBookId,
+      email
+    );
+    console.log(response);
+    if (response!) {
+      this.openPopUp(response, 'sharedContactBook');
+    }
+  }
+
+  openPopUp(msg: string, tp: string) {
+    this.dialog.open(PopUpComponent, {
+      width: '200px',
+      data: {
+        message: msg,
+        type: tp,
+      },
+    });
+  }
+  handleShContactBook() {
+    this.shContactBook = !this.shContactBook;
   }
 }

@@ -66,7 +66,6 @@ export class ContactBooksComponent implements OnInit {
   openPopUp(msg: string) {
     this.dialog.open(PopUpComponent, {
       width: '200px',
-      height: '130px',
       data: {
         message: msg,
         type: 'ok',

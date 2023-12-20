@@ -1,8 +1,11 @@
-<section id="contacts-page">
+<section *ngIf="!shContactBook" id="contacts-page">
   <h2 id="contactBook-title">
     AGENDA: <br />{{ contactBook.contactBookName }}
   </h2>
   <button id="new-contact" [routerLink]="['new']">Agregar contacto</button>
+  <button id="share-contactBook" (click)="handleShContactBook()">
+    Compartir agenda
+  </button>
 
   <main id="contacts-container" *ngIf="contactsData.length > 0">
     <app-contact-card
@@ -13,4 +16,39 @@
   <section id="no-contacts-container" *ngIf="contactsData.length === 0">
     <div id="no-contacts">No hay contactos</div>
   </section>
+</section>
+
+<!-- ///////////////////////////////////////////////// -->
+
+<section *ngIf="shContactBook" id="container">
+  <button id="share-contactBook2" (click)="handleShContactBook()">
+    Volver
+  </button>
+
+  <div class="share-container">
+    <h2>Compartir agenda</h2>
+
+    <form
+      class="shareContactBook-form"
+      #shareContactBookForm="ngForm"
+      (ngSubmit)="shareContactBook(this.sharedEmail.email)"
+    >
+      <label for="email">Email:</label>
+      <input
+        type="text"
+        name="email"
+        id="email"
+        placeholder="Email del usuario al que compartir"
+        [(ngModel)]="sharedEmail.email"
+        #email="ngModel"
+        pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$"
+        [required]="true"
+      />
+      <p *ngIf="email.touched && email.errors">Email requerido</p>
+
+      <button type="submit" [disabled]="shareContactBookForm.invalid">
+        Compartir
+      </button>
+    </form>
+  </div>
 </section>

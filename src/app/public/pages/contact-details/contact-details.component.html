@@ -9,7 +9,13 @@
         (ngSubmit)="clickSubmit()"
       >
         <label for="name">Nombre:</label>
-        <input type="text" id="name" [(ngModel)]="contact.name" name="name" />
+        <input
+          type="text"
+          id="name"
+          [(ngModel)]="contact.name"
+          name="name"
+          (change)="onFormChange()"
+        />
 
         <label for="lastName">Apellido:</label>
         <input
@@ -17,6 +23,7 @@
           id="lastName"
           [(ngModel)]="contact.lastName"
           name="lastName"
+          (change)="onFormChange()"
         />
 
         <label for="email">Email:</label>
@@ -25,6 +32,7 @@
           id="email"
           [(ngModel)]="contact.email"
           name="email"
+          (change)="onFormChange()"
         />
 
         <label for="email">Teléfono:</label>
@@ -33,9 +41,10 @@
           id="phoneNumber"
           [(ngModel)]="contact.phoneNumber"
           name="phoneNumber"
+          (change)="onFormChange()"
         />
 
-        <button type="submit">Guardar</button>
+        <button type="submit" [disabled]="!formChanged">Guardar</button>
       </form>
     </div>
   </div>

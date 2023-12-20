@@ -59,7 +59,6 @@ export class ContactService {
       },
       body: JSON.stringify(contact),
     });
-    console.log(response.json());
     return await response.json();
   }
 

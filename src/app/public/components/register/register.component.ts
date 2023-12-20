@@ -49,7 +49,6 @@ export class RegisterComponent {
   openPopUp() {
     const dialogRef = this.dialog.open(PopUpComponent, {
       width: '200px',
-      height: '200px',
       data: {
         message: 'Registro correcto, por favor, ingrese con sus datos',
         type: 'navigate',

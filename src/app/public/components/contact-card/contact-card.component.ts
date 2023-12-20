@@ -12,7 +12,6 @@ import { ContactsComponent } from '../../pages/contacts/contacts.component';
 })
 export class ContactCardComponent implements OnInit {
   constructor(
-    private cService: ContactService,
     private dialog: MatDialog,
     private cComponent: ContactsComponent
   ) {}
@@ -23,27 +22,20 @@ export class ContactCardComponent implements OnInit {
     console.log(this.contact);
   }
 
-  async deleteContact(contactId: number | undefined) {
-    if (contactId) {
-      const response = await this.cService.deleteContact(contactId);
-
-      if (response === true) {
-        this.cComponent.getData(); //para recargar los contactos
-        this.openPopUp('Contacto borrado correctamente');
-      } else {
-        this.openPopUp('Error al borrar contacto');
-      }
-    }
-  }
-
-  openPopUp(msg: string) {
-    this.dialog.open(PopUpComponent, {
+  openPopUp(msg: string, tp: string, contactId: number | undefined) {
+    console.log(contactId);
+    const dialogRef = this.dialog.open(PopUpComponent, {
       width: '200px',
       height: '130px',
       data: {
         message: msg,
-        type: 'ok',
+        type: tp,
+        contactId: contactId,
       },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      this.cComponent.getData();
     });
   }
 }

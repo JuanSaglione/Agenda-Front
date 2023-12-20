@@ -10,11 +10,7 @@ import { PopUpComponent } from '../pop-up/pop-up.component';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  constructor(
-    private auth: AuthService,
-    private router: Router,
-    private dialog: MatDialog
-  ) {}
+  constructor(private auth: AuthService, private dialog: MatDialog) {}
 
   isLogged() {
     return this.auth.isLoggedIn(); //si esta logueado devuelve true sino false
@@ -28,9 +24,8 @@ export class HeaderComponent implements OnInit {
     //this.isLogg() //al iniciar o al recargar la pagina corrobora si el user esta logg
   }
   openPopUp() {
-    const dialogRef = this.dialog.open(PopUpComponent, {
+    this.dialog.open(PopUpComponent, {
       width: '200px',
-      height: '130px',
       data: {
         message: '¿Seguro que querés cerrar sesión?',
         type: 'closeSession',
