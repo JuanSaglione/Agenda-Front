@@ -3,12 +3,13 @@ import { IRegisterRequest, iAuthRequest } from '../interfaces/auth';
 import { BACKEND_URL } from '../constants/backend';
 import { ISession } from '../interfaces/session.interface';
 import { jwtDecode } from 'jwt-decode';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  constructor() {}
+  constructor(private router: Router) {}
 
   private loggedIn: boolean = false;
 
@@ -114,6 +115,7 @@ export class AuthService {
   resetSession() {
     localStorage.removeItem('session');
     localStorage.removeItem('id');
+    this.router.navigateByUrl('');
     this.loggedIn = false;
     console.log('logged out');
   }

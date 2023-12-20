@@ -58,9 +58,9 @@ export class UserDetailComponent implements OnInit {
         console.log(response);
         this.user = response;
         this.editing = false;
-        this.openPopUp('Contacto editado correctamente', 'ok');
+        this.openPopUp('Usuario editado correctamente', 'ok');
       } else {
-        this.openPopUp('Error al editar contacto', '');
+        this.openPopUp('Error al editar su usuario', '');
       }
     }
   }

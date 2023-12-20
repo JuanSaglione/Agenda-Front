@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ContactJsonPlaceholder } from 'src/app/core/interfaces/contact.interface';
 import { ContactBookJsonPlaceHolder } from 'src/app/core/interfaces/contactBook.interface';
 import { ContactBookService } from 'src/app/core/services/contact-book.service';
@@ -21,13 +21,15 @@ export class ContactsComponent implements OnInit {
   sharedEmail: any = {
     email: '',
   };
+  dropdownActive: boolean = false;
 
   constructor(
     private contactS: ContactService,
     private contactB: ContactBookService,
     private route: ActivatedRoute,
     private dialog: MatDialog,
-    private shService: SharedContactBookService
+    private shService: SharedContactBookService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -65,19 +67,45 @@ export class ContactsComponent implements OnInit {
     console.log(response);
     if (response!) {
       this.openPopUp(response, 'sharedContactBook');
+      this.dropdownActive = false;
     }
   }
+  deleteContactBook() {
+    console.log('hola');
+  }
 
-  openPopUp(msg: string, tp: string) {
-    this.dialog.open(PopUpComponent, {
+  openPopUp(msg: string, tp: string, cI?: number) {
+    const dialogRef = this.dialog.open(PopUpComponent, {
       width: '200px',
       data: {
         message: msg,
         type: tp,
+        contactBookId: cI,
       },
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(result);
+
+      if (result && result.action) {
+        console.log(`Se utilizó la acción: ${result.action}`);
+
+        if (result.action === 'delete') {
+          this.router.navigateByUrl('/contactBooks');
+        }
+      }
     });
   }
   handleShContactBook() {
+    if (this.dropdownActive) {
+      this.dropdownActive = false;
+    }
     this.shContactBook = !this.shContactBook;
+  }
+  handleDropdown() {
+    if (this.dropdownActive) {
+      this.dropdownActive = false;
+    } else {
+      this.dropdownActive = true;
+    }
   }
 }

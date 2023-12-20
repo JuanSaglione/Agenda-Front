@@ -3,9 +3,30 @@
     AGENDA: <br />{{ contactBook.contactBookName }}
   </h2>
   <button id="new-contact" [routerLink]="['new']">Agregar contacto</button>
-  <button id="share-contactBook" (click)="handleShContactBook()">
-    Compartir agenda
-  </button>
+  <div
+    class="dropdown"
+    [class.active]="dropdownActive"
+    (click)="handleDropdown()"
+  >
+    <button class="dropbtn">Opciones</button>
+    <div class="dropdown-content" *ngIf="dropdownActive">
+      <button id="sh-button" (click)="handleShContactBook()">
+        Compartir agenda
+      </button>
+      <button
+        id="delete-button"
+        (click)="
+          openPopUp(
+            '¿Seguro que querés eliminar la agenda?',
+            'deleteContactBook',
+            contactBook.id
+          )
+        "
+      >
+        Eliminar
+      </button>
+    </div>
+  </div>
 
   <main id="contacts-container" *ngIf="contactsData.length > 0">
     <app-contact-card

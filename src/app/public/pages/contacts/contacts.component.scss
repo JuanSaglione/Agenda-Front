@@ -22,6 +22,72 @@ $tipografia-1: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
   color: $color-blanco;
   text-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
 }
+#delete-icon {
+  cursor: pointer;
+  height: 30px;
+}
+#delete-icon:hover {
+  transform: scale(1.15);
+}
+
+//////////////////////
+
+.dropbtn {
+  background-color: rgb(122, 119, 136);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+.dropbtn:hover {
+  background-color: rgb(108, 105, 118);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 110%; /* Posiciona el dropdown-content abajo del botón principal */
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  text-align: center; /* Centra los elementos horizontalmente */
+}
+
+.dropdown-content button {
+  color: $color-blanco;
+  background-color: $color-1;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  cursor: pointer;
+  width: 100%;
+}
+
+.dropdown {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra los elementos horizontalmente */
+  position: relative; /* Importante para el posicionamiento del dropdown-content */
+}
+
+.dropdown-content button:hover {
+  background-color: $color-2;
+}
+
+.dropdown:hover .dropdown-content {
+  display: none; /* Ocultar el contenido al pasar el ratón por encima */
+}
+
+.dropdown.active .dropdown-content {
+  display: block; /* Mostrar el contenido cuando la clase 'active' está presente */
+}
+
+////////////////////
 
 #contacts-container {
   display: flex;
@@ -133,22 +199,11 @@ $tipografia-1: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
   }
 }
 
-#share-contactBook {
-  padding: 10px;
-  border-radius: 10px;
-  margin: 10px 0px;
-  font-size: 15px;
-  cursor: pointer;
-  border: none;
-  width: fit-content;
-  align-self: center;
-  background-color: rgb(122, 119, 136);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
-  cursor: pointer;
+#sh-button {
+  border-radius: 10px 10px 0px 0px;
 }
-#share-contactBook:hover {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
-  background-color: rgb(118, 116, 126);
+#delete-button {
+  border-radius: 0px 0px 10px 10px;
 }
 
 #share-contactBook2 {

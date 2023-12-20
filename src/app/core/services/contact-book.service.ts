@@ -64,6 +64,29 @@ export class ContactBookService {
     return await response.json();
   }
 
+  async deleteContactBook(contactBookId: number) {
+    console.log(contactBookId);
+    try {
+      const response = await fetch(
+        BACKEND_URL + '/ContactBook/delete/' + contactBookId,
+        {
+          method: 'DELETE',
+          headers: {
+            'Content-type': 'application/json',
+            Authorization: `Bearer ${this.auth.getSession().token!}`,
+          },
+        }
+      );
+      if (response.ok) {
+        return response.ok;
+      }
+      return false;
+    } catch (error) {
+      console.log(error);
+      return false;
+    }
+  }
+
   // para sharedContactBooks
   async addContactBookToUser(contactBookId: number) {
     const response = await fetch(

@@ -50,7 +50,7 @@ export class RegisterComponent {
     const dialogRef = this.dialog.open(PopUpComponent, {
       width: '200px',
       data: {
-        message: 'Registro exitoso, ahora ingrese con sus datos',
+        message: 'Registro exitoso!, ahora ingrese con sus datos',
         type: 'navigate',
         route: '/auth/login',
       },
