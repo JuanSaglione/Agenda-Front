@@ -50,16 +50,14 @@ export class RegisterComponent {
     const dialogRef = this.dialog.open(PopUpComponent, {
       width: '200px',
       data: {
-        message: 'Registro correcto, por favor, ingrese con sus datos',
+        message: 'Registro exitoso, ahora ingrese con sus datos',
         type: 'navigate',
         route: '/auth/login',
       },
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      // Verifica si el diálogo se cerró sin hacer clic en los botones específicos
       if (!result) {
-        // Ejecuta la acción deseada
         this.router.navigateByUrl('/auth/login');
       }
     });

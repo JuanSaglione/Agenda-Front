@@ -33,6 +33,8 @@ export class PopUpComponent implements OnInit {
       this.router.navigateByUrl(this.data.route);
     } else if (this.data.type === 'deleteContact') {
       this.deleteContact(this.data.contactId);
+    } else if (this.data.type === 'deleteUser') {
+      this.auth.resetSession();
     }
   }
 }

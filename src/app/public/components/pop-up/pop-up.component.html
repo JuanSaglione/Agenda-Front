@@ -12,6 +12,7 @@
   <button
     *ngIf="data.type !== 'closeSession' && data.type !== 'deleteContact'"
     id="ok-button"
+    (click)="action()"
     mat-dialog-close
   >
     Ok

@@ -1,29 +1,72 @@
-<div *ngIf="user">
-  <h2>User Details</h2>
+<section id="container">
+  <div class="form-container">
+    <div class="contact-container" *ngIf="user">
+      <h2>Detalles de usuario</h2>
 
-  <!-- Formulario de detalles del usuario -->
-  <form (submit)="onSubmit()" #userForm="ngForm">
-    <label for="userName">User Name:</label>
-    <input type="text" id="userName" name="userName" [(ngModel)]="user.name" required [readonly]="!editing">
+      <form id="user-form" (submit)="onSubmit()" #userForm="ngForm">
+        <label for="userName">Nombre de usuario:</label>
+        <input
+          type="text"
+          id="userName"
+          name="userName"
+          [(ngModel)]="user.name"
+          required
+          [readonly]="!editing"
+        />
 
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" [(ngModel)]="user.email" required [readonly]="!editing">
+        <label for="email">Email:</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          [(ngModel)]="user.email"
+          required
+          [readonly]="!editing"
+        />
 
-    <label for="phoneNumber">Phone Number:</label>
-    <input type="text" id="phoneNumber" name="phoneNumber" [(ngModel)]="user.phoneNumber" required [readonly]="!editing">
+        <label for="phoneNumber">Numero de teléfono:</label>
+        <input
+          type="text"
+          id="phoneNumber"
+          name="phoneNumber"
+          [(ngModel)]="user.phoneNumber"
+          required
+          [readonly]="!editing"
+        />
 
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="password" [(ngModel)]="user.password" required [readonly]="!editing">
+        <label for="password">Contraseña:</label>
 
-    <!-- Agrega otros campos según tu interfaz -->
+        <input
+          type="{{ passwordFieldType }}"
+          id="password"
+          name="password"
+          [(ngModel)]="user.password"
+          required
+          [readonly]="!editing"
+        />
+        <img
+          class="eye-slash"
+          id="togglePassword"
+          (click)="togglePasswordVisibility()"
+          [src]="source"
+        />
 
-    <!-- Botón para habilitar la edición -->
-    <button type="button" (click)="enableEditing()" [disabled]="editing">Editar</button>
+        <!-- Botón para habilitar la edición -->
+        <button
+          id="edit-button"
+          type="button"
+          (click)="enableEditing()"
+          [disabled]="editing"
+        >
+          Editar
+        </button>
 
-    <!-- Botón de actualización (visible solo durante la edición) -->
-    <button type="submit" [disabled]="!editing">Guardar Cambios</button>
+        <!-- Botón de actualización (visible solo durante la edición) -->
+        <button type="submit" [disabled]="!editing">Guardar Cambios</button>
 
-    <!-- Botón para eliminar cuenta -->
-    <button type="button" (click)="deleteAccount()">Eliminar Cuenta</button>
-  </form>
-</div>
+        <!-- Botón para eliminar cuenta -->
+        <button type="button" (click)="deleteAccount()">Eliminar Cuenta</button>
+      </form>
+    </div>
+  </div>
+</section>
