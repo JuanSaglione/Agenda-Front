@@ -15,6 +15,7 @@ export class SharedContactBooksComponent implements OnInit {
     contactBookName: '',
     description: '',
     ownerUserId: 0,
+    ownerUserName: '',
   };
   isLoading: boolean = true;
   noSharedContactBooks!: string;

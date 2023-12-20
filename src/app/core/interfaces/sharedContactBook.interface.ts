@@ -3,4 +3,5 @@ export interface SharedContactBookJsonPlaceHolder {
     contactBookName?: string;
     description?: string;
     ownerUserId?: number;
+    ownerUserName?: string;
   }
